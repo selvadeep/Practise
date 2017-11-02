@@ -1,0 +1,23 @@
+require 'rubygems'
+require 'nokogiri'
+require 'restclient'
+
+page = Nokogiri::HTML(RestClient.get("https://www.latlong.net/category/cities-102-15.html"))   
+#puts page.class
+tables = page.search('table')
+#table = tables.last
+#puts table
+
+tables.search('tr,a').each do |tr,a|
+ cells = tr.search('a')
+ #puts cells
+# puts cells
+#puts tr.at('a')['title']
+end
+
+title = page.css('a')          
+output =  title.map {|element| element["title"]}.compact
+puts output[0]
+
+
+

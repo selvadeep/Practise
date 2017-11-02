@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table with Filter Option</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div>
+	<table style="border: 1px solid orange;">
+		<th ng-click="orderclick('id')">Id</th>
+		<th ng-click="orderclick('name')">Name</th>
+		<th ng-click="orderclick('price')">Price</th>
+		<th ng-click="orderclick('address')">Address</th>
+		<tr ng-repeat="element in myarray | orderBy: orderElement | filter: 'a' | limitTo: '10'">
+			<td>{{element.id | number}}</td>
+			<td>{{element.name | json}}</td>
+			<td>{{element.price | currency}}</td>
+			<td>{{element.address | lowercase}}</td>
+		</tr>
+	</table>
+</div>
+<script>
+	var app = angular.module("myApp",[]);
+	app.controller("myCtrl", function($scope,$rootScope){
+		$scope.myarray=[
+		{id: '1', name: 'selva', price: 100, address: 'Chennai'},
+		{id: '2', name: 'gana', price: 200, address: 'Bangalore'}
+		]
+	  $scope.orderclick = function(element){
+  		$scope.orderElement = element;
+  		}
+
+	});
+	
+
+
+</script>
+</body>
+</html>

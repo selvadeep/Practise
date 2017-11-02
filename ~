@@ -1,0 +1,39 @@
+require 'rubygems'
+require 'nokogiri'
+require 'restclient'
+
+page = Nokogiri::HTML(RestClient.get("https://www.latlong.net/category/cities-102-15.html"))   
+#puts page.class
+tables = page.search('table')
+#table = tables.last
+#puts table
+tables.search('tr,a,th').each do |tr,a,th|
+ cells = tr.search('th')
+# puts cells
+#puts tr.at('a')['title']
+end
+title = tables.css('a')          
+output =  title.map {|element| element["title"]}.compact
+#puts output[0]
+#b = (output[0]*",").split(",")
+a = []
+a << output[0]
+#puts a.class
+c = output[0].split(",")
+#puts c
+
+
+title = tables.css('td')
+output =  title.map {|element| element}.compact
+
+out = output.delete_if { |x| x.include? "selva" }
+
+puts out[0]
+puts out[0].any?{|i| i["<a"]}
+puts out.size
+
+
+
+
+
+

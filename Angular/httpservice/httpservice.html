@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GET method in HTTP Protocal</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		{{response_data}}
+	</div>
+<script>
+	var app = angular.module("myApp",[])
+	app.controller("myCtrl",function($scope,$rootScope,$http){
+		$http.get("https://api.myjson.com/bins/1edijl").then(function(response){
+			$rootScope.response_data = response.data;
+		});
+	});
+</script>
+</body>
+</html>

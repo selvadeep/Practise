@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Route Provider for AngularJS </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>	
+</head>
+<body ng-app="myApp">
+	<a href="#!/">Main</a>
+	<a href="#!green">Green</a>
+	<a href="#!red">Red</a>
+<script>
+	
+	var app = angular.module("myApp",["ngRoute"]);
+	app.config(function($routeProvider){
+		$routeProvider
+		.when("/",{
+			templateUrl : "/home/selva/Project/Practise/Angular/httpservice/main.html"
+		})
+		.when("/red",{
+			templateUrl: "/home/selva/Project/Practise/Angular/httpservice/red.html"
+		})
+		.when("/green",{
+			templateUrl: "/home/selva/Project/Practise/Angular/httpservice/green.html"
+		});
+	});
+
+</script>
+
+</body>
+</html>

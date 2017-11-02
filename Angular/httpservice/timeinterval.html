@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Time Interval Function</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		{{message}}
+	</div>
+<script>
+	var app = angular.module("myApp",[]);
+	app.controller("myCtrl",function($scope,$interval){
+		$scope.id = 1;
+		$scope.message = "Time Interval"
+		$interval(function(){
+			$scope.message= $scope.message + Number($scope.id) + Number(1)
+		},1000);
+	});
+</script>
+</body>
+</html>

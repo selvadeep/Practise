@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spritle</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%#= yield %>
+
+<div class="container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
+
+<%= yield :top_content %>
+
+<div class="container">
+    <h1><%= yield :header %></h1>
+  <%= yield %>
+</div>
+
+<!-- <ul class="nav navbar-nav">
+  <li><%#= link_to 'Home', root_path %></li>
+  <#% if user_signed_in? %>
+    <li><%#= link_to 'Secret', secret_path %></li>
+  <%# end %>
+</ul> -->
+
+  </body>
+</html>

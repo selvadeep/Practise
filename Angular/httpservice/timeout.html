@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TimeOut function in AngularJS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		{{message}}
+	</div>
+<script>
+	var app = angular.module("myApp",[]);
+	app.controller("myCtrl", function($scope, $timeout){
+		$scope.message = "Before TimeOut Function";
+		// $setTimeout(function() {}, 10);
+		$timeout(function(){
+		  $scope.message = "After TimeOut Function";
+		},2000);
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Service / Factory / Provider </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<span> Factory Output :<br /> {{factory_output}}</span> <br /> <br />
+		<span> Service Output : <br /> {{service_output}}</span> <br /> <br />
+		<span> Provider Output : <br /> {{provider_output}}</span> <br /> <br />
+	</div>
+<script>
+	var servicefactoryprovider = function()
+	{
+		var website = "http://www.google.com"
+		this.$get = function(){
+			var website = "http://www.yahoo.com"
+			return "Provider output is " + website
+		}
+
+		return "Factory output is " + website
+	}
+
+	var app = angular.module("myApp",[])
+	
+	app.service("myService", servicefactoryprovider)
+	app.factory("myFactory", servicefactoryprovider)
+	app.provider("myProvider", servicefactoryprovider)
+
+	app.controller("myCtrl",function($scope, myService, myFactory, myProvider){
+		$scope.service_output = myService;
+		$scope.factory_output = myFactory;
+		$scope.provider_output = myProvider;
+	});
+
+</script>
+</body>
+</html>
